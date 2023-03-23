@@ -1,5 +1,13 @@
 <template>
-  <div>
+  <div class="app">
+    <div>
+      <form>
+        <h4>create post</h4>
+        <input class="input" type="text" placeholder="title" />
+        <input class="input" type="text" placeholder="post" />
+        <button class="btn">create</button>
+      </form>
+    </div>
     <div class="post" v-for="post in posts">
       <div><strong>Title: </strong> {{ post.title }}</div>
       <div><strong>DEscription: </strong> {{ post.body }}</div>
@@ -47,10 +55,30 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-
+.app {
+  padding: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.btn {
+  align-self: flex-end;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: none;
+  color: teal;
+  border: 2px solid teal;
+}
 .post {
   padding: 15px;
   border: 2px solid teal;
+  margin-top: 15px;
+}
+.input {
+  width: 100%;
+  border: 2px solid teal;
+  padding: 10px 15px;
   margin-top: 15px;
 }
 </style>
