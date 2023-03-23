@@ -3,9 +3,21 @@
     <div>
       <form>
         <h4>create post</h4>
-        <input class="input" type="text" placeholder="title" />
-        <input class="input" type="text" placeholder="post" />
-        <button class="btn">create</button>
+        <input
+          v-bind:value="title"
+          @input="title = $event.target.value"
+          class="input"
+          type="text"
+          placeholder="title"
+        />
+        <input
+          v-bind:value="body"
+          @input="body = $event.target.value"
+          class="input"
+          type="text"
+          placeholder="post"
+        />
+        <button class="btn" @click="createPost">create</button>
       </form>
     </div>
     <div class="post" v-for="post in posts">
@@ -36,6 +48,8 @@ export default {
           body: "Lorem ipsum dolor sit amet co elit",
         },
       ],
+      title: "",
+      body: "",
     };
   },
   methods: {
