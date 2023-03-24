@@ -9,7 +9,7 @@
         placeholder="title"
       />
       <input v-model="post.body" class="input" type="text" placeholder="post" />
-      <button class="btn" @click="createPost">create</button>
+      <my-button class="btn" @click="createPost">create</my-button>
     </form>
   </div>
 </template>
@@ -41,14 +41,6 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-}
-.btn {
-  align-self: flex-end;
-  margin-top: 15px;
-  padding: 10px 15px;
-  background: none;
-  color: teal;
-  border: 2px solid teal;
 }
 
 .input {
