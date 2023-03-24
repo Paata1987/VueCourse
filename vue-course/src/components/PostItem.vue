@@ -2,7 +2,7 @@
   <div class="post">
     <div>
       <div><strong>Title: </strong> {{ post.title }}</div>
-      <div><strong>DEscription: </strong> {{ post.body }}</div>
+      <div><strong>Description: </strong> {{ post.body }}</div>
     </div>
     <div class="post__buttons">
       <my-button> delete </my-button>

@@ -35,11 +35,10 @@ export default {
       title: "",
       body: "",
     };
-    w;
   },
   methods: {
-    createPost(first, second, third) {
-      console.log(first, second, third);
+    createPost(post) {
+      this.posts.push(post);
     },
   },
 };
