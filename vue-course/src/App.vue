@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <post-form />
+    <post-form @create="createPost" />
     <post-list :posts="posts" />
   </div>
 </template>
@@ -35,17 +35,11 @@ export default {
       title: "",
       body: "",
     };
+    w;
   },
   methods: {
-    createPost() {
-      const newPost = {
-        id: Date.now(),
-        title: this.title,
-        body: this.body,
-      };
-      this.posts.push(newPost);
-      this.title = "";
-      this.body = "";
+    createPost(first, second, third) {
+      console.log(first, second, third);
     },
   },
 };

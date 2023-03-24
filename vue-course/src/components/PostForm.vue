@@ -3,26 +3,38 @@
     <form @submit.prevent>
       <h4>create post</h4>
       <input
-        v-bind:value="title"
-        @input="title = $event.target.value"
+        v-model="post.title"
         class="input"
         type="text"
         placeholder="title"
       />
-      <input
-        v-bind:value="body"
-        @input="body = $event.target.value"
-        class="input"
-        type="text"
-        placeholder="post"
-      />
-      <button class="btn">create</button>
+      <input v-model="post.body" class="input" type="text" placeholder="post" />
+      <button class="btn" @click="createPost">create</button>
     </form>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      post: {
+        title: "",
+        body: "",
+      },
+    };
+  },
+  methods: {
+    createPost() {
+      this.post.id = Date.now();
+      this.$emit("create", this.post, "second params", "third params ");
+      this.post = {
+        title: "",
+        body: "",
+      };
+    },
+  },
+};
 </script>
 
 <style scoped>
