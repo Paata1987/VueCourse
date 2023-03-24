@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <h3>Users List</h3>
+  <div v-show="posts.length > 0">
+    <h2>Users List</h2>
+
     <post-item
       :post="post"
       :key="post.id"
       v-for="post in posts"
       @remove="$emit('remove', post)"
     />
+  </div>
+  <div v-show="posts.length === 0">
+    <h2 style="color: red">Users List is Empty</h2>
   </div>
 </template>
 
