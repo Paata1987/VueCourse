@@ -10,7 +10,7 @@
       <post-form @create="createPost" />
     </my-dialog>
 
-    <post-list @remove="removePost" :posts="posts" v-if="!isPsotsLoading" />
+    <post-list @remove="removePost" :posts="posts" v-if="!isPostsLoading" />
     <div v-else>Loading...</div>
   </div>
 </template>
@@ -19,11 +19,13 @@
 import PostForm from "./components/PostForm.vue";
 import PostList from "./components/PostList.vue";
 import axios from "axios";
+import MySelect from "./components/UI/MySelect.vue";
 
 export default {
   components: {
     PostForm,
     PostList,
+    MySelect,
   },
   data() {
     return {
@@ -66,6 +68,22 @@ export default {
   mounted() {
     this.fetchPosts();
   },
+  computed: {
+    sortedPosts() {
+      return [...this.posts].sort((firstPst, secondPst) => {
+        return firstPst[this.selectedSort]?.localeCompare(
+          secondPst[this.selectedSort]
+        );
+      });
+    },
+  },
+  /* watch: {
+    selectedSort(newValue) {
+      this.posts.sort((post1, post2) => {
+        return post1[newValue]?.localeCompare(post2[newValue]);
+      });
+    },
+  }, */
 };
 </script>
 
