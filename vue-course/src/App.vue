@@ -1,8 +1,11 @@
 <template>
   <div class="app">
     <h1>POSTS PAGE</h1>
+    <div class="app__btns">
+      <my-button @click="showDialog"> create user </my-button>
+      <my-select v-model="selectedSort" :options="sortOptions" />
+    </div>
 
-    <my-button @click="showDialog"> create user </my-button>
     <my-dialog v-model:show="dialogVisible">
       <post-form @create="createPost" />
     </my-dialog>
@@ -27,6 +30,11 @@ export default {
       posts: [],
       dialogVisible: false,
       isPsotsLoading: false,
+      selectedSort: "",
+      sortOptions: [
+        { value: "title", name: "By name" },
+        { value: "body", name: "By descriprion" },
+      ],
     };
   },
   methods: {
@@ -43,7 +51,6 @@ export default {
     async fetchPosts() {
       try {
         this.isPsotsLoading = true;
-
         const response = await axios.get(
           "https://jsonplaceholder.typicode.com/posts?_limit=10"
         );
@@ -70,5 +77,10 @@ export default {
 }
 .app {
   padding: 20px;
+}
+.app__btns {
+  margin: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
